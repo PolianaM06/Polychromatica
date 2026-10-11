@@ -734,3 +734,88 @@ a:focus-visible {
     font-size: clamp(1.7rem, 3vw, 2.2rem);
     font-weight: 400;
 }
+
+
+/* Organiza a imagem e as setas na horizontal */
+.lightbox-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mantém a imagem centralizada */
+.lightbox-figure {
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0;
+}
+
+/* Posiciona as setas nas laterais */
+.lightbox-previous,
+.lightbox-next {
+    position: static;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+/* Mantém o botão de fechar no canto superior direito */
+.lightbox-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+}
+
+/* Ajustes para celular */
+@media (max-width: 600px) {
+    .lightbox-content {
+        gap: 0.4rem;
+    }
+
+    .lightbox-previous,
+    .lightbox-next {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.9rem;
+    }
+
+    .lightbox-image {
+        max-width: 62vw;
+        max-height: 70vh;
+    }
+}
+
+/* Mantém a imagem e a legenda centralizadas */
+.lightbox-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0;
+}
+
+/* Impede que a legenda determine a largura da imagem */
+.lightbox-caption {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+}
+
+/* Mantém a imagem centralizada no espaço disponível */
+.lightbox-image {
+    display: block;
+    margin-inline: auto;
+    max-width: min(65vw, 900px);
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}

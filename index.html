@@ -7,7 +7,7 @@
 
     <meta
         name="description"
-        content="Polychromatica — portfólio de arte, criatividade e expressão visual."
+        content="Polychromatica — alma, cor e magia."
     >
 
     <title>Polychromatica | Portfólio de Arte</title>
@@ -56,12 +56,12 @@
             >
 
             <div class="hero-content">
-                <p class="hero-eyebrow">Arte • Cor • Expressão</p>
+                <p class="hero-eyebrow">Arte com alma, cor e magia</p>
 
                 <h1>Polychromatica</h1>
 
                 <p class="hero-description">
-                    Arte com alma, cor e magia.
+                    Por Poliana Melo
                 </p>
 
                 <a class="hero-link" href="#criacoes">
@@ -540,32 +540,58 @@
         </section>
 
         <!-- Janela de ampliação das obras -->
-        <dialog
-            class="lightbox"
-            id="lightbox"
-            aria-label="Visualização ampliada da obra"
+        <!-- Janela de ampliação das obras -->
+<dialog
+    class="lightbox"
+    id="lightbox"
+    aria-label="Visualização ampliada da obra"
+>
+    <div class="lightbox-content">
+
+        <button
+            class="lightbox-close"
+            type="button"
+            aria-label="Fechar imagem ampliada"
+            data-lightbox-close
         >
-            <div class="lightbox-content">
+            <span aria-hidden="true">&times;</span>
+        </button>
 
-                <button
-                    class="lightbox-close"
-                    type="button"
-                    aria-label="Fechar imagem ampliada"
-                    data-lightbox-close
-                >
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        <button
+            class="lightbox-previous"
+            type="button"
+            aria-label="Exibir obra anterior"
+            data-lightbox-previous
+        >
+            <span aria-hidden="true">&#10094;</span>
+        </button>
 
-                <img
-                    class="lightbox-image"
-                    src=""
-                    alt=""
-                >
+        <figure class="lightbox-figure">
+            <img
+                class="lightbox-image"
+                src=""
+                alt=""
+            >
 
-                <p class="lightbox-caption"></p>
+            <figcaption class="lightbox-caption"></figcaption>
 
-            </div>
-        </dialog>
+            <p
+                class="lightbox-counter"
+                aria-live="polite"
+            ></p>
+        </figure>
+
+        <button
+            class="lightbox-next"
+            type="button"
+            aria-label="Exibir próxima obra"
+            data-lightbox-next
+        >
+            <span aria-hidden="true">&#10095;</span>
+        </button>
+
+    </div>
+</dialog>
 
         <!-- Contatos -->
         <section
