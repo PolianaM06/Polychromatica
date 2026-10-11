@@ -1,0 +1,736 @@
+/* =========================================================
+   POLYCHROMATICA — PORTFÓLIO DE ARTE
+   Direção visual: vintage fantástico
+   Paleta: lilás, Tiffany, papel antigo e dourado
+   ========================================================= */
+
+/* 1. Fontes e variáveis globais */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Parisienne&display=swap');
+
+:root {
+    color-scheme: light;
+
+    /* Cores */
+    --color-paper: #F6EEDF;
+    --color-paper-light: #FFF9F0;
+    --color-paper-shadow: #E8DCC8;
+    --color-lilac: #B9A0D8;
+    --color-lilac-light: #E6D9F2;
+    --color-lilac-dark: #77618B;
+    --color-tiffany: #A9E5DC;
+    --color-tiffany-dark: #4E9E96;
+    --color-gold: #C9A86A;
+    --color-ink: #403448;
+    --color-muted: #766B76;
+    --color-white: #FFFFFF;
+
+    /* Tipografia */
+    --font-display: "Cormorant Garamond", Georgia, serif;
+    --font-body: "Lora", Georgia, serif;
+    --font-script: "Parisienne", cursive;
+
+    /* Layout */
+    --content-width: 1160px;
+    --page-gutter: clamp(1.15rem, 5vw, 4.5rem);
+    --section-space: clamp(4rem, 9vw, 7.5rem);
+    --radius-small: 0.5rem;
+    --radius-medium: 1rem;
+    --radius-large: 1.5rem;
+
+    /* Sombras */
+    --shadow-soft: 0 12px 32px rgb(64 52 72 / 10%);
+    --shadow-card: 0 8px 20px rgb(64 52 72 / 12%);
+    --shadow-lilac: 0 8px 24px rgb(119 97 139 / 18%);
+}
+
+/* 2. Reset e comportamento geral */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background-color: var(--color-paper);
+    background-image:
+        radial-gradient(
+            ellipse at 10% 12%,
+            rgb(185 160 216 / 12%),
+            transparent 32%
+        ),
+        radial-gradient(
+            ellipse at 90% 45%,
+            rgb(169 229 220 / 15%),
+            transparent 30%
+        );
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--color-tiffany-dark);
+    outline-offset: 4px;
+}
+
+::selection {
+    background-color: var(--color-lilac);
+    color: var(--color-ink);
+}
+
+/* 3. Cabeçalho e navegação */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid rgb(201 168 106 / 40%);
+    background-color: rgb(246 238 223 / 94%);
+    box-shadow: 0 4px 18px rgb(64 52 72 / 5%);
+    backdrop-filter: blur(12px);
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    width: min(100% - (var(--page-gutter) * 2), var(--content-width));
+    min-height: 5.5rem;
+    margin-inline: auto;
+}
+
+.logo {
+    flex-shrink: 0;
+    color: var(--color-lilac-dark);
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    transition: color 180ms ease;
+}
+
+.logo:hover {
+    color: var(--color-tiffany-dark);
+}
+
+.navigation-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 2.5vw, 2.25rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navigation-list a {
+    position: relative;
+    display: inline-block;
+    padding-block: 0.5rem;
+    color: var(--color-ink);
+    font-size: 0.9rem;
+    transition: color 180ms ease;
+}
+
+.navigation-list a::after {
+    position: absolute;
+    right: 0;
+    bottom: 0.15rem;
+    left: 0;
+    height: 1px;
+    background-color: var(--color-tiffany-dark);
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms ease;
+}
+
+.navigation-list a:hover {
+    color: var(--color-lilac-dark);
+}
+
+.navigation-list a:hover::after {
+    transform: scaleX(1);
+}
+
+/* 4. Capa principal */
+.hero {
+    position: relative;
+    display: grid;
+    min-height: clamp(32rem, 68vw, 48rem);
+    place-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(3rem, 8vw, 7rem) var(--page-gutter);
+    background-color: var(--color-lilac);
+    text-align: center;
+}
+
+/* Textura de papel sobre a capa */
+.hero::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border: 1px solid rgb(255 249 240 / 35%);
+    background-image:
+        radial-gradient(
+            ellipse at 15% 20%,
+            rgb(255 249 240 / 48%),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 85% 75%,
+            rgb(169 229 220 / 48%),
+            transparent 35%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 5px,
+            rgb(64 52 72 / 2%) 6px
+        );
+    content: "";
+    pointer-events: none;
+}
+
+.hero-image {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Se a imagem de capa for decorativa, o conteúdo continua legível */
+.hero-content {
+    width: min(100%, 780px);
+    padding: clamp(2rem, 5vw, 4rem);
+    border: 1px solid rgb(255 249 240 / 78%);
+    outline: 1px solid rgb(201 168 106 / 80%);
+    outline-offset: -0.65rem;
+    border-radius: 48% 48% 1.25rem 1.25rem / 18% 18% 1.25rem 1.25rem;
+    background-color: rgb(246 238 223 / 86%);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(5px);
+}
+
+.hero-eyebrow,
+.section-eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--color-lilac-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    margin: 0;
+    color: var(--color-lilac-dark);
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+}
+
+.hero-description {
+    max-width: 35rem;
+    margin: 1.5rem auto 2rem;
+    color: var(--color-ink);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
+
+.hero-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.2rem;
+    padding: 0.8rem 1.6rem;
+    border: 1px solid var(--color-lilac-dark);
+    border-radius: 999px;
+    background-color: var(--color-lilac-dark);
+    color: var(--color-white);
+    font-size: 0.9rem;
+    transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.hero-link:hover {
+    transform: translateY(-3px);
+    background-color: var(--color-tiffany);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-lilac);
+}
+
+/* 5. Estrutura compartilhada das seções */
+.section-container {
+    position: relative;
+    width: min(100% - (var(--page-gutter) * 2), var(--content-width));
+    margin-inline: auto;
+    padding-block: var(--section-space);
+}
+
+.section-heading {
+    max-width: 48rem;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: var(--color-lilac-dark);
+    font-family: var(--font-display);
+    font-size: clamp(2.7rem, 6vw, 4.5rem);
+    font-weight: 500;
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
+.section-description {
+    max-width: 38rem;
+    margin: 1rem auto 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+}
+
+/* 6. Apresentação */
+.about {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 5rem);
+}
+
+.about .section-heading {
+    margin: 0;
+    text-align: left;
+}
+
+.about-content {
+    position: relative;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid rgb(201 168 106 / 65%);
+    border-radius: var(--radius-small);
+    background-color: rgb(255 249 240 / 72%);
+    box-shadow: var(--shadow-soft);
+}
+
+.about-content::before {
+    position: absolute;
+    inset: 0.45rem;
+    border: 1px dashed rgb(119 97 139 / 30%);
+    border-radius: 0.25rem;
+    content: "";
+    pointer-events: none;
+}
+
+.about-content p {
+    position: relative;
+    margin: 0;
+}
+
+.about-content p + p {
+    margin-top: 1rem;
+}
+
+/* 7. Galeria de criações */
+.gallery {
+    width: 100%;
+    max-width: none;
+    padding-inline: var(--page-gutter);
+    background-color: rgb(185 160 216 / 12%);
+}
+
+.gallery .section-heading,
+.gallery-grid {
+    width: min(100%, var(--content-width));
+    margin-inline: auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.artwork {
+    min-width: 0;
+    margin: 0;
+}
+
+.artwork-button {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    padding: 0.6rem;
+    border: 1px solid var(--color-gold);
+    border-radius: 0.25rem;
+    background-color: var(--color-paper-light);
+    box-shadow: var(--shadow-card);
+    cursor: zoom-in;
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        background-color 220ms ease;
+}
+
+/* Moldura interna */
+.artwork-button::after {
+    position: absolute;
+    inset: 0.9rem;
+    border: 1px solid rgb(201 168 106 / 65%);
+    content: "";
+    pointer-events: none;
+    transition: border-color 220ms ease;
+}
+
+.artwork-button img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background-color: var(--color-lilac-light);
+    transition: transform 350ms ease;
+}
+
+.artwork-button:hover {
+    z-index: 1;
+    transform: translateY(-5px) rotate(-0.5deg);
+    box-shadow: var(--shadow-lilac);
+}
+
+.artwork-button:hover img {
+    transform: scale(1.04);
+}
+
+.artwork-button:hover::after {
+    border-color: var(--color-tiffany-dark);
+}
+
+.artwork figcaption {
+    padding: 0.9rem 0.25rem 0;
+    color: var(--color-lilac-dark);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* 8. Janela de ampliação (lightbox) */
+.lightbox {
+    width: min(92vw, 1050px);
+    max-width: none;
+    max-height: 90dvh;
+    overflow: auto;
+    padding: clamp(1rem, 3vw, 2rem);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-medium);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    box-shadow: 0 24px 80px rgb(0 0 0 / 30%);
+}
+
+.lightbox::backdrop {
+    background-color: rgb(35 27 42 / 82%);
+    backdrop-filter: blur(5px);
+}
+
+.lightbox-content {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    padding: clamp(0.5rem, 2vw, 1.25rem);
+    border: 1px dashed rgb(119 97 139 / 45%);
+}
+
+.lightbox-close {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    justify-self: end;
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: -2.75rem;
+    place-items: center;
+    border: 1px solid var(--color-lilac-dark);
+    border-radius: 50%;
+    background-color: var(--color-paper-light);
+    color: var(--color-lilac-dark);
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg);
+    background-color: var(--color-tiffany);
+    color: var(--color-ink);
+}
+
+.lightbox-image {
+    width: auto;
+    max-width: 100%;
+    max-height: 72dvh;
+    object-fit: contain;
+}
+
+.lightbox-caption {
+    margin: 0;
+    color: var(--color-lilac-dark);
+    font-family: var(--font-script);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    line-height: 1.3;
+    text-align: center;
+}
+
+/* Aparência quando o diálogo não está aberto */
+.lightbox:not([open]) {
+    display: none;
+}
+
+/* 9. Contatos */
+.contact {
+    text-align: center;
+}
+
+.contact .section-heading {
+    margin-bottom: 1.5rem;
+}
+
+.contact-description {
+    max-width: 40rem;
+    margin: 0 auto 2rem;
+    color: var(--color-muted);
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 9rem;
+    min-height: 3rem;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--color-lilac-dark);
+    border-radius: 999px;
+    background-color: var(--color-lilac-light);
+    color: var(--color-ink);
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
+}
+
+.contact-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-tiffany-dark);
+    background-color: var(--color-tiffany);
+}
+
+/* 10. Rodapé */
+.site-footer {
+    padding: 1.5rem var(--page-gutter);
+    border-top: 1px solid rgb(201 168 106 / 50%);
+    background-color: var(--color-lilac-light);
+    color: var(--color-lilac-dark);
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+/* 11. Responsividade: tablets e telas médias */
+@media (max-width: 900px) {
+    .navigation {
+        gap: 1.25rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about .section-heading {
+        text-align: center;
+    }
+}
+
+/* 12. Responsividade: celulares */
+@media (max-width: 600px) {
+    :root {
+        --section-space: 4rem;
+    }
+
+    .navigation {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        padding-block: 1rem;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .navigation-list {
+        justify-content: center;
+        gap: 0.35rem 1.15rem;
+    }
+
+    .navigation-list a {
+        font-size: 0.82rem;
+    }
+
+    .hero {
+        min-height: 35rem;
+        padding-inline: 1rem;
+    }
+
+    .hero-content {
+        padding: 2.25rem 1.25rem;
+        border-radius: 42% 42% 1rem 1rem / 12% 12% 1rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(3.1rem, 14vw, 5rem);
+        overflow-wrap: anywhere;
+    }
+
+    .hero-description {
+        margin-block: 1.25rem 1.5rem;
+    }
+
+    .section-heading {
+        margin-bottom: 2rem;
+    }
+
+    .gallery {
+        padding-inline: 1rem;
+    }
+
+    .gallery-grid {
+        gap: 1rem;
+    }
+
+    .artwork-button {
+        padding: 0.4rem;
+    }
+
+    .artwork-button::after {
+        inset: 0.65rem;
+    }
+
+    .artwork figcaption {
+        font-size: 1.15rem;
+    }
+
+    .lightbox {
+        width: 96vw;
+        max-height: 94dvh;
+        padding: 0.65rem;
+    }
+
+    .lightbox-content {
+        padding: 0.5rem;
+    }
+
+    .lightbox-image {
+        max-height: 78dvh;
+    }
+}
+
+/* 13. Acessibilidade: respeitar preferência por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* Destaque da apresentação da marca */
+.about-tagline {
+    position: relative;
+    margin: 0 0 1.5rem;
+    color: var(--color-lilac-dark);
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.about-tagline span {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--color-tiffany-dark);
+    font-family: var(--font-script);
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    font-weight: 400;
+}
