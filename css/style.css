@@ -16,11 +16,11 @@
     --color-paper-shadow: #E8DCC8;
     --color-lilac: #B9A0D8;
     --color-lilac-light: #E6D9F2;
-    --color-lilac-dark: #77618B;
+    --color-lilac-dark: #7b16e8;
     --color-tiffany: #A9E5DC;
-    --color-tiffany-dark: #4E9E96;
+    --color-tiffany-dark: #00a494;
     --color-gold: #C9A86A;
-    --color-ink: #403448;
+    --color-ink: #4C00A0;
     --color-muted: #766B76;
     --color-white: #FFFFFF;
 
@@ -818,4 +818,47 @@ a:focus-visible {
     width: auto;
     height: auto;
     object-fit: contain;
+}
+
+
+/* Logo do menu de navegação */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 600px) {
+  .logo img {
+    width: 150px;
+  }
+}
+
+
+/* Logo da marca na capa */
+.hero-logo {
+    display: block;
+    width: min(520px, 85%);
+    max-height: 240px;
+    height: auto;
+    object-fit: contain;
+    margin: 1rem auto 1.5rem;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 600px) {
+    .hero-logo {
+        width: min(360px, 90%);
+        max-height: 170px;
+        margin: 0.75rem auto 1.25rem;
+    }
 }
