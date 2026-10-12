@@ -893,3 +893,103 @@ a:focus-visible {
         margin: 0.75rem auto 1.25rem;
     }
 }
+
+
+/* Seção Sobre Mim */
+section#sobre.about {
+    display: block;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding: clamp(3rem, 6vw, 5rem) var(--page-gutter);
+    margin: 0;
+    background-color: var(--color-lilac);
+    overflow: hidden;
+}
+
+#sobre .about-container {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem);
+    border: 1px solid rgb(201 168 106 / 75%);
+    outline: 1px solid rgb(201 168 106 / 45%);
+    outline-offset: -0.5rem;
+    border-radius: 48% 48% 1.5rem 1.5rem / 12% 12% 1.5rem 1.5rem;
+    background-color: rgb(246 238 223 / 90%);
+    box-shadow: var(--shadow-soft);
+}
+
+#sobre .about-heading {
+    width: 100%;
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+#sobre .about-heading h2 {
+    margin: 0.5rem 0;
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    color: var(--color-purple);
+}
+
+#sobre .section-eyebrow {
+    color: var(--color-purple);
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+#sobre .about-divider {
+    display: block;
+    margin-top: 1rem;
+    color: #c9a86a;
+    font-size: 1.4rem;
+}
+
+#sobre .about-content {
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    color: #494052;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    text-align: center;
+}
+
+#sobre .about-content p {
+    margin: 0 0 1.25rem;
+}
+
+#sobre .about-intro {
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+}
+
+#sobre .about-signature {
+    padding-top: 0.5rem;
+    color: var(--color-purple);
+    font-family: var(--font-heading);
+    font-style: italic;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 600px) {
+    section#sobre.about {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    #sobre .about-container {
+        padding: 2rem 1.25rem;
+        border-radius: 1.5rem;
+    }
+
+    #sobre .about-content {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
